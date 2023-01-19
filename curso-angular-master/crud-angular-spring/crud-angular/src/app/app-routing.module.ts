@@ -1,4 +1,3 @@
-import { AlunoModule } from './Aluno/alunos/aluno.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -12,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'aluno',
-    loadChildren: () => import('./Aluno/aluno.module').then(m => m.AlunoModule),
+    loadChildren: () => import('./Aluno/alunos/aluno.module').then(m => m.AlunoModule),
   }
 ];
 

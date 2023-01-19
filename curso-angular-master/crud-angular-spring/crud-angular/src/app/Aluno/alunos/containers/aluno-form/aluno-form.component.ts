@@ -29,11 +29,11 @@ export class AlunoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const course: Aluno = this.route.snapshot.data['aluno'];
+    const aluno: Aluno = this.route.snapshot.data['aluno'];
     this.form.setValue({
-      _id: course._id,
-      name: course.name,
-      category: course.category
+      _id: aluno._id,
+      name: aluno.name,
+      category: aluno.category
     });
   }
 
