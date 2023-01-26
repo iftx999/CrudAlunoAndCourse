@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { AlunoService } from '../services/aluno.service';
-import { Aluno } from '../model/aluno';
+import { Course } from '../model/aluno';
+import { CoursesService } from '../services/courses.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlunoResolver implements Resolve<Aluno> {
+export class CoursesResolver implements Resolve<Course> {
 
-  constructor(private service: AlunoService) { }
+  constructor(private service: CoursesService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Aluno> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Course> {
     if (route.params && route.params['id']) {
       return this.service.loadById(route.params['id']);
     }

@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
-import { Course } from '../../model/course';
+import { Course } from '../../model/aluno';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({

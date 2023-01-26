@@ -1,16 +1,18 @@
-import { Aluno } from '../../model/aluno';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { AlunoService } from '../../services/aluno.service';
+import { Course } from '../../model/aluno';
+
+import { CoursesService } from '../../services/courses.service';
+
 @Component({
-  selector: 'app-aluno-form',
-  templateUrl: './aluno-form.component.html',
-  styleUrls: ['./aluno-form.component.scss']
+  selector: 'app-course-form',
+  templateUrl: './course-form.component.html',
+  styleUrls: ['./course-form.component.scss']
 })
-export class AlunoFormComponent implements OnInit {
+export class CourseFormComponent implements OnInit {
 
   form = this.formBuilder.group({
     _id: [''],
@@ -21,7 +23,7 @@ export class AlunoFormComponent implements OnInit {
   });
 
   constructor(private formBuilder: NonNullableFormBuilder,
-    private service: AlunoService,
+    private service: CoursesService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute) {
@@ -29,17 +31,17 @@ export class AlunoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const aluno: Aluno = this.route.snapshot.data['aluno'];
+    const course: Course = this.route.snapshot.data['course'];
     this.form.setValue({
-      _id: aluno._id,
-      name: aluno.name,
-      category: aluno.category
+      _id: course._id,
+      name: course.name,
+      category: course.category
     });
   }
 
   onSubmit() {
     this.service.save(this.form.value)
-      .subscribe(() => this.onSuccess(), () => this.onError());
+      .subscribe(result => this.onSuccess(), error => this.onError());
   }
 
   onCancel() {
