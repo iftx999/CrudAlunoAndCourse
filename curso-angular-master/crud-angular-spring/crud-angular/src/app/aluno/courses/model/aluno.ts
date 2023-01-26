@@ -1,5 +1,6 @@
-export interface Course {
-  _id: string;
-  name: string;
-  category: string;
+export interface Aluno {
+  id: string;
+  nome: string;
+  cpf: string;
+  idade: string;
 }

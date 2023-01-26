@@ -3,27 +3,27 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Course } from '../../model/aluno';
+import { Aluno } from '../../model/aluno';
 
-import { CoursesService } from '../../services/courses.service';
-
+import { AlunoService } from '../../services/aluno.service';
 @Component({
-  selector: 'app-course-form',
-  templateUrl: './course-form.component.html',
-  styleUrls: ['./course-form.component.scss']
+  selector: 'app-aluno-form',
+  templateUrl: './aluno-form.component.html',
+  styleUrls: ['./aluno-form.component.scss']
 })
-export class CourseFormComponent implements OnInit {
+export class AlunoFormComponent implements OnInit {
 
   form = this.formBuilder.group({
-    _id: [''],
-    name: ['', [Validators.required,
+    id: [''],
+    idade: [''],
+    nome: ['', [Validators.required,
     Validators.minLength(5),
     Validators.maxLength(100)]],
-    category: ['', [Validators.required]]
+    cpf: ['', [Validators.required]]
   });
 
   constructor(private formBuilder: NonNullableFormBuilder,
-    private service: CoursesService,
+    private service: AlunoService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute) {
@@ -31,11 +31,12 @@ export class CourseFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const course: Course = this.route.snapshot.data['course'];
+    const aluno: Aluno = this.route.snapshot.data['aluno'];
     this.form.setValue({
-      _id: course._id,
-      name: course.name,
-      category: course.category
+      id: aluno.id,
+      nome: aluno.nome,
+      cpf: aluno.cpf,
+      idade: aluno.idade
     });
   }
 

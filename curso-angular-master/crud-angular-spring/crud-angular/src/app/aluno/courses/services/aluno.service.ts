@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Course } from '../model/aluno';
+import { Aluno } from '../model/aluno';
 import { delay, first, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesService {
+export class AlunoService {
 
-  private readonly API = 'api/courses';
+  private readonly API = 'api/aluno';
 
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Course[]>(this.API)
+    return this.httpClient.get<Aluno[]>(this.API)
       .pipe(
         first(),
         //delay(5000),
@@ -23,12 +23,12 @@ export class CoursesService {
   }
 
   loadById(id: string) {
-    return this.httpClient.get<Course>(`${this.API}/${id}`);
+    return this.httpClient.get<Aluno>(`${this.API}/${id}`);
   }
 
-  save(record: Partial<Course>) {
+  save(record: Partial<Aluno>) {
     // console.log(record);
-    if (record._id) {
+    if (record.id) {
       // console.log('update');
       return this.update(record);
     }
@@ -36,12 +36,12 @@ export class CoursesService {
     return this.create(record);
   }
 
-  private create(record: Partial<Course>) {
-    return this.httpClient.post<Course>(this.API, record).pipe(first());
+  private create(record: Partial<Aluno>) {
+    return this.httpClient.post<Aluno>(this.API, record).pipe(first());
   }
 
-  private update(record: Partial<Course>) {
-    return this.httpClient.put<Course>(`${this.API}/${record._id}`, record).pipe(first());
+  private update(record: Partial<Aluno>) {
+    return this.httpClient.put<Aluno>(`${this.API}/${record.id}`, record).pipe(first());
   }
 
   remove(id: string) {

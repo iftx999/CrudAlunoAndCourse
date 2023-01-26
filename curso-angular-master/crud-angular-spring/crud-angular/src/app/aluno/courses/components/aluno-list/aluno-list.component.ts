@@ -6,7 +6,7 @@ import { Aluno } from '../../model/aluno';
   templateUrl: './aluno-list.component.html',
   styleUrls: ['./aluno-list.component.scss']
 })
-export class CoursesListComponent implements OnInit {
+export class AlunoListComponent implements OnInit {
 
   @Input() aluno: Aluno[] = [];
   @Output() add = new EventEmitter(false);

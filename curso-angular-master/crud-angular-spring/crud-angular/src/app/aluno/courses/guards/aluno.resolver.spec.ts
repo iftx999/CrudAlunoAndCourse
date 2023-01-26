@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { CoursesResolver } from './aluno.resolver';
+import { AlunoResolver } from './aluno.resolver';
 
-describe('CoursesResolver', () => {
-  let resolver: CoursesResolver;
+describe('AlunoResolver', () => {
+  let resolver: AlunoResolver;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    resolver = TestBed.inject(CoursesResolver);
+    resolver = TestBed.inject(AlunoResolver);
   });
 
   it('should be created', () => {
