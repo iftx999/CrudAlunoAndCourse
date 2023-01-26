@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'aluno',
-    loadChildren: () => import('./Aluno/alunos/aluno.module').then(m => m.AlunoModule),
+    loadChildren: () => import('./aluno/courses/aluno.module').then(z => z.AlunoModule),
   }
 ];
 

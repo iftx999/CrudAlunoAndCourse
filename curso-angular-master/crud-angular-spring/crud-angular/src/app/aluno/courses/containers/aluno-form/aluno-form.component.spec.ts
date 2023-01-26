@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseFormComponent } from './course-form.component';
-
-describe('CourseFormComponent', () => {
-  let component: CourseFormComponent;
-  let fixture: ComponentFixture<CourseFormComponent>;
+import { AlunoFormComponent } from './aluno-form.component';
+describe('AlunoFormComponent', () => {
+  let component: AlunoFormComponent;
+  let fixture: ComponentFixture<AlunoFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CourseFormComponent ]
+      declarations: [ AlunoFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourseFormComponent);
+    fixture = TestBed.createComponent(AlunoFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

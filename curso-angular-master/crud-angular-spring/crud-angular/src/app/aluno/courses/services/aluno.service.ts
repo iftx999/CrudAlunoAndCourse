@@ -9,7 +9,7 @@ import { delay, first, tap } from 'rxjs/operators';
 })
 export class AlunoService {
 
-  private readonly API = 'api/alunos';
+  private readonly API = 'api/aluno';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,7 +28,7 @@ export class AlunoService {
 
   save(record: Partial<Aluno>) {
     // console.log(record);
-    if (record._id) {
+    if (record.id) {
       // console.log('update');
       return this.update(record);
     }
@@ -41,11 +41,10 @@ export class AlunoService {
   }
 
   private update(record: Partial<Aluno>) {
-    return this.httpClient.put<Aluno>(`${this.API}/${record._id}`, record).pipe(first());
+    return this.httpClient.put<Aluno>(`${this.API}/${record.id}`, record).pipe(first());
   }
 
   remove(id: string) {
     return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 }
-

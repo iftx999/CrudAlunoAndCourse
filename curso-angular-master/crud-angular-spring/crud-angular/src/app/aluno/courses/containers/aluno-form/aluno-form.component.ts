@@ -1,9 +1,10 @@
-import { Aluno } from '../../model/aluno';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { Aluno } from '../../model/aluno';
+
 import { AlunoService } from '../../services/aluno.service';
 @Component({
   selector: 'app-aluno-form',
@@ -13,11 +14,12 @@ import { AlunoService } from '../../services/aluno.service';
 export class AlunoFormComponent implements OnInit {
 
   form = this.formBuilder.group({
-    _id: [''],
-    name: ['', [Validators.required,
+    id: [''],
+    idade: [''],
+    nome: ['', [Validators.required,
     Validators.minLength(5),
     Validators.maxLength(100)]],
-    category: ['', [Validators.required]]
+    cpf: ['', [Validators.required]]
   });
 
   constructor(private formBuilder: NonNullableFormBuilder,
@@ -31,15 +33,16 @@ export class AlunoFormComponent implements OnInit {
   ngOnInit(): void {
     const aluno: Aluno = this.route.snapshot.data['aluno'];
     this.form.setValue({
-      _id: aluno._id,
-      name: aluno.name,
-      category: aluno.category
+      id: aluno.id,
+      nome: aluno.nome,
+      cpf: aluno.cpf,
+      idade: aluno.idade
     });
   }
 
   onSubmit() {
     this.service.save(this.form.value)
-      .subscribe(() => this.onSuccess(), () => this.onError());
+      .subscribe(result => this.onSuccess(), error => this.onError());
   }
 
   onCancel() {

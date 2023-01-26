@@ -1,4 +1,4 @@
-import { ConfirmationDialogComponent } from './../../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,21 +6,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
-import { Course } from '../../model/course';
-import { CoursesService } from '../../services/courses.service';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { Aluno } from './../../model/aluno';
+import { AlunoService } from '../../services/aluno.service';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  selector: 'app-aluno',
+  templateUrl: './aluno.component.html',
+  styleUrls: ['./aluno.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class AlunoComponent implements OnInit {
 
-  courses$: Observable<Course[]> | null = null;
+  aluno$: Observable<Aluno[]> | null = null;
 
   constructor(
-    private coursesService: CoursesService,
+    private alunoService: AlunoService,
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
@@ -30,7 +30,7 @@ export class CoursesComponent implements OnInit {
   }
 
   refresh() {
-    this.courses$ = this.coursesService.list()
+    this.aluno$ = this.alunoService.list()
       .pipe(
         catchError(error => {
           this.onError('Erro ao carregar cursos.');
@@ -47,22 +47,22 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onAdd() {
+  onAddAluno() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  onEdit(course: Course) {
-    this.router.navigate(['edit', course._id], { relativeTo: this.route });
+  onEdit(aluno: Aluno) {
+    this.router.navigate(['edit', aluno.id], { relativeTo: this.route });
   }
 
-  onRemove(course: Course) {
+  onRemove(aluno: Aluno) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse curso?',
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.coursesService.remove(course._id).subscribe(
+        this.alunoService.remove(aluno.id).subscribe(
           () => {
             this.refresh();
             this.snackBar.open('Curso removido com sucesso!', 'X', {
