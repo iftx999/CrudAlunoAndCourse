@@ -51,11 +51,11 @@ export class AlunoComponent implements OnInit {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  onEdit(aluno: Aluno) {
+  onEditAluno(aluno: Aluno) {
     this.router.navigate(['edit', aluno.id], { relativeTo: this.route });
   }
 
-  onRemove(aluno: Aluno) {
+  onRemoveAluno(aluno: Aluno) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse curso?',
     });
