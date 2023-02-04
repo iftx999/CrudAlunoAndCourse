@@ -1,19 +1,19 @@
 <mat-table [dataSource]="aluno">
   <!-- Name Column -->
   <ng-container matColumnDef="nome">
-    <mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
     <mat-cell *matCellDef="let aluno">{{ aluno.nome }}</mat-cell>
   </ng-container>
 
   <!-- Category Column -->
   <ng-container matColumnDef="cpf">
-    <mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
     <mat-cell *matCellDef="let aluno">{{ aluno.cpf }}</mat-cell>
   </ng-container>
 
     <!-- Category Column -->
     <ng-container matColumnDef="idade">
-      <mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>IDADE</mat-header-cell>
       <mat-cell *matCellDef="let aluno">{{ aluno.idade }}</mat-cell>
     </ng-container>
 
@@ -26,7 +26,7 @@
         mat-mini-fab
         color="accent"
         aria-label="Adicionar um curso"
-        (click)="onAdd()"
+        (click)="onAddAluno()"
         class="action-column-header"
       >
         <mat-icon>add</mat-icon>
@@ -37,8 +37,8 @@
       <button
         mat-icon-button
         color="primary"
-        aria-label="Editar Curso"
-        (click)="onEdit(aluno)"
+        aria-label="Editar "
+        (click)="onEditAluno(aluno)"
       >
         <mat-icon>edit</mat-icon>
       </button>
@@ -46,8 +46,8 @@
       <button
         mat-icon-button
         color="warn"
-        aria-label="Remover Curso"
-        (click)="onDelete(aluno)"
+        aria-label="Remover Aluno"
+        (click)="onDeleteAluno(aluno)"
       >
         <mat-icon>delete</mat-icon>
       </button>

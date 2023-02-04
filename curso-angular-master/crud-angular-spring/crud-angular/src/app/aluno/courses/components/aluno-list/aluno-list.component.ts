@@ -19,15 +19,15 @@ export class AlunoListComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onAdd() {
+  onAddAluno() {
     this.add.emit(true);
   }
 
-  onEdit(aluno: Aluno) {
+  onEditAluno(aluno: Aluno) {
     this.edit.emit(aluno);
   }
 
-  onDelete(aluno: Aluno) {
+  onDeleteAluno(aluno: Aluno) {
     this.remove.emit(aluno);
   }
 
