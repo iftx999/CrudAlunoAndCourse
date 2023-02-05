@@ -15,7 +15,6 @@ export class AlunoFormComponent implements OnInit {
 
   form = this.formBuilder.group({
     id: [''],
-    idade: [''],
     nome: ['', [Validators.required,
     Validators.minLength(5),
     Validators.maxLength(100)]],
@@ -36,7 +35,6 @@ export class AlunoFormComponent implements OnInit {
       id: aluno.id,
       nome: aluno.nome,
       cpf: aluno.cpf,
-      idade: aluno.idade
     });
   }
 

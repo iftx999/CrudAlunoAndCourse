@@ -5,9 +5,9 @@
     <app-aluno-list
       *ngIf="aluno$ | async as aluno; else loading"
       [aluno]="aluno"
-      (onAddAluno)="onAddAluno()"
-      (edit)="onEditAluno($event)"
-      (remove)="onRemoveAluno($event)"
+      (onAdd)="onAdd()"
+      (edit)="onEdit($event)"
+      (remove)="onRemove($event)"
     ></app-aluno-list>
 
     <ng-template #loading>

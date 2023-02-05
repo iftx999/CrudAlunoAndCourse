@@ -7,17 +7,9 @@
 
   <!-- Category Column -->
   <ng-container matColumnDef="cpf">
-    <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>cpf</mat-header-cell>
     <mat-cell *matCellDef="let aluno">{{ aluno.cpf }}</mat-cell>
   </ng-container>
-
-    <!-- Category Column -->
-    <ng-container matColumnDef="idade">
-      <mat-header-cell *matHeaderCellDef>IDADE</mat-header-cell>
-      <mat-cell *matCellDef="let aluno">{{ aluno.idade }}</mat-cell>
-    </ng-container>
-
-
 
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
@@ -25,20 +17,21 @@
       <button
         mat-mini-fab
         color="accent"
-        aria-label="Adicionar um curso"
-        (click)="onAddAluno()"
+        aria-label="Adicionar um aluno"
+        (click)="onAdd()"
         class="action-column-header"
       >
         <mat-icon>add</mat-icon>
       </button>
+      
     </mat-header-cell>
 
     <mat-cell *matCellDef="let aluno" class="action-column">
       <button
         mat-icon-button
         color="primary"
-        aria-label="Editar "
-        (click)="onEditAluno(aluno)"
+        aria-label="Editar Curso"
+        (click)="onEdit(aluno)"
       >
         <mat-icon>edit</mat-icon>
       </button>
@@ -46,8 +39,8 @@
       <button
         mat-icon-button
         color="warn"
-        aria-label="Remover Aluno"
-        (click)="onDeleteAluno(aluno)"
+        aria-label="Remover Curso"
+        (click)="onDelete(aluno)"
       >
         <mat-icon>delete</mat-icon>
       </button>

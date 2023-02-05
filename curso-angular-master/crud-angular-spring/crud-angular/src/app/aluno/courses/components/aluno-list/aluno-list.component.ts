@@ -13,21 +13,21 @@ export class AlunoListComponent implements OnInit {
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-  readonly displayedColumns = ['nome', 'cpf', 'idade'];
+  readonly displayedColumns = ['nome', 'cpf', 'actions'];
 
   constructor() { }
 
   ngOnInit(): void { }
 
-  onAddAluno() {
+  onAdd() {
     this.add.emit(true);
   }
 
-  onEditAluno(aluno: Aluno) {
+  onEdit(aluno: Aluno) {
     this.edit.emit(aluno);
   }
 
-  onDeleteAluno(aluno: Aluno) {
+  onDelete(aluno: Aluno) {
     this.remove.emit(aluno);
   }
 

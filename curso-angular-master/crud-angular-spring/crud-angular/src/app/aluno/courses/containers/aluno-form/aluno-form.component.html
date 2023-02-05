@@ -11,17 +11,7 @@
         }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <mat-label>cpf</mat-label>
-        <mat-select formControlName="cpf">
-          <mat-option value="null"> </mat-option>
-          <mat-option value="Front-end">Front-End</mat-option>
-          <mat-option value="Back-end">Back-End</mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('cpf')?.invalid">{{
-          getErrorMessage("cpf")
-        }}</mat-error>
-      </mat-form-field>
+    
     </form>
   </mat-card-content>
 
