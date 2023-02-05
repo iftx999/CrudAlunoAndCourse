@@ -1,6 +1,8 @@
 package com.loiane;
 
+import com.loiane.model.Aluno;
 import com.loiane.model.Course;
+import com.loiane.repository.AlunoRepository;
 import com.loiane.repository.CourseRepository;
 
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +27,17 @@ public class CrudSpringApplication {
 			c.setCategory("Front-end");
 
 			courseRepository.save(c);
+		};
+	}
+	CommandLineRunner initDatabaseAluno(AlunoRepository alunoRepository) {
+		return args -> {
+			alunoRepository.deleteAll();
+
+			Aluno a = new Aluno();
+			a.setNome("Angular com Spring");
+			a.setCpf("5555");
+
+			alunoRepository.save(a);
 		};
 	}
 }
