@@ -47,7 +47,7 @@ export class AlunoComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onAddAluno() {
+  onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 

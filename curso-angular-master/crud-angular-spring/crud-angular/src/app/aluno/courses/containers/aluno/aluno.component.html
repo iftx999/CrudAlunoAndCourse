@@ -1,11 +1,11 @@
 <mat-card>
-  <mat-toolbar color="primary">Cursos Disponíveis</mat-toolbar>
+  <mat-toolbar color="primary">Lista de Alunos</mat-toolbar>
 
   <div class="example-container mat-elevation-z8">
     <app-aluno-list
       *ngIf="aluno$ | async as aluno; else loading"
       [aluno]="aluno"
-      (add)="onAdd()"
+      (onAdd)="onAdd()"
       (edit)="onEdit($event)"
       (remove)="onRemove($event)"
     ></app-aluno-list>
