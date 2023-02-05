@@ -35,13 +35,6 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
 
     public String getNome() {
         return nome;
@@ -57,15 +50,10 @@ public class Aluno {
     @Column(length = 10, nullable = false)
     private String cpf;
 
-    @NotNull
-    @Length(max = 10)
-    @Pattern(regexp = "Back-end|Front-end")
-    @Column(length = 10, nullable = false)
-    private Integer idade;
+
 
     @NotNull
     @Length(max = 10)
-    @Pattern(regexp = "Back-end|Front-end")
     @Column(length = 10, nullable = false)
     private String nome;
 
