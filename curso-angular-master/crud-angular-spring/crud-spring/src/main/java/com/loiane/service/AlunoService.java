@@ -34,26 +34,26 @@ public class AlunoService {
                 .collect(Collectors.toList());
     }
 
-    public AlunoDTO findById(@PathVariable @NotNull @Positive Long id) {
-        return alunoRepository.findById(id).map(alunoMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+    public AlunoDTO findById(@PathVariable @NotNull @Positive Long idAluno) {
+        return alunoRepository.findById(idAluno).map(alunoMapper::toDTO)
+                .orElseThrow(() -> new RecordNotFoundException(idAluno));
     }
 
     public AlunoDTO create(@Valid @NotNull AlunoDTO course) {
         return alunoMapper.toDTO(alunoRepository.save(alunoMapper.toEntity(course)));
     }
 
-    public AlunoDTO update(@NotNull @Positive Long id, @Valid @NotNull AlunoDTO aluno) {
-        return alunoRepository.findById(id)
+    public AlunoDTO update(@NotNull @Positive Long idAluno, @Valid @NotNull AlunoDTO aluno) {
+        return alunoRepository.findById(idAluno)
                 .map(recordFound -> {
                     recordFound.setNome(aluno.nome());
                     recordFound.setCpf(aluno.cpf());
                     return alunoMapper.toDTO(alunoRepository.save(recordFound));
-                }).orElseThrow(() -> new RecordNotFoundException(id));
+                }).orElseThrow(() -> new RecordNotFoundException(idAluno));
     }
 
-    public void delete(@PathVariable @NotNull @Positive Long id) {
-        alunoRepository.delete(alunoRepository.findById(id)
-                .orElseThrow(() -> new RecordNotFoundException(id)));
+    public void delete(@PathVariable @NotNull @Positive Long idAluno) {
+        alunoRepository.delete(alunoRepository.findById(idAluno)
+                .orElseThrow(() -> new RecordNotFoundException(idAluno)));
     }
 }
