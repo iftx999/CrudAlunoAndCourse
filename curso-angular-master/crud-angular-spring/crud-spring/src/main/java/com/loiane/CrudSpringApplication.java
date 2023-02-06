@@ -15,6 +15,7 @@ public class CrudSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudSpringApplication.class, args);
+
 	}
 
 	@Bean
@@ -29,7 +30,7 @@ public class CrudSpringApplication {
 			courseRepository.save(c);
 		};
 	}
-	CommandLineRunner initDatabaseAluno(AlunoRepository alunoRepository) {
+	CommandLineRunner initDatabase(AlunoRepository alunoRepository) {
 		return args -> {
 			alunoRepository.deleteAll();
 
