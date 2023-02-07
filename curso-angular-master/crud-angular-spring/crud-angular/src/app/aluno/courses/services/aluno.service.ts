@@ -22,13 +22,13 @@ export class AlunoService {
       );
   }
 
-  loadById(id: string) {
-    return this.httpClient.get<Aluno>(`${this.API}/${id}`);
+  loadById(idAluno: string) {
+    return this.httpClient.get<Aluno>(`${this.API}/${idAluno}`);
   }
 
   save(record: Partial<Aluno>) {
     // console.log(record);
-    if (record.id) {
+    if (record.idAluno) {
       // console.log('update');
       return this.update(record);
     }
@@ -41,10 +41,10 @@ export class AlunoService {
   }
 
   private update(record: Partial<Aluno>) {
-    return this.httpClient.put<Aluno>(`${this.API}/${record.id}`, record).pipe(first());
+    return this.httpClient.put<Aluno>(`${this.API}/${record.idAluno}`, record).pipe(first());
   }
 
-  remove(id: string) {
-    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
+  remove(idAluno: string) {
+    return this.httpClient.delete(`${this.API}/${idAluno}`).pipe(first());
   }
 }

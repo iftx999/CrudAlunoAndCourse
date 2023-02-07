@@ -30,13 +30,17 @@ export class AlunoComponent implements OnInit {
   }
 
   refresh() {
+
     this.aluno$ = this.alunoService.list()
+    
       .pipe(
         catchError(error => {
-          this.onError('Erro ao carregar cursos.');
+          this.onError('Erro ao carregar aluno.');
           return of([])
         })
       );
+      console.log(this.aluno$);
+
   }
 
   onError(errorMsg: string) {
@@ -52,7 +56,7 @@ export class AlunoComponent implements OnInit {
   }
 
   onEdit(aluno: Aluno) {
-    this.router.navigate(['edit', aluno.id], { relativeTo: this.route });
+    this.router.navigate(['edit', aluno.idAluno], { relativeTo: this.route });
   }
 
   onRemove(aluno: Aluno) {
@@ -62,7 +66,7 @@ export class AlunoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.alunoService.remove(aluno.id).subscribe(
+        this.alunoService.remove(aluno.idAluno).subscribe(
           () => {
             this.refresh();
             this.snackBar.open('Curso removido com sucesso!', 'X', {

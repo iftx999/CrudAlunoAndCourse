@@ -32,7 +32,7 @@ export class AlunoFormComponent implements OnInit {
   ngOnInit(): void {
     const aluno: Aluno = this.route.snapshot.data['aluno'];
     this.form.setValue({
-      id: aluno.id,
+      id: aluno.idAluno,
       nome: aluno.nome,
       cpf: aluno.cpf,
     });
